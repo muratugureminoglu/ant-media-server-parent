@@ -76,7 +76,7 @@ jobs:
 
       - name: Deploy Snapshot
         if: startsWith(github.ref, 'refs/heads/') && contains(steps.get_version.outputs.version, 'SNAPSHOT')
-        run: mvn deploy -DskipTests -Dgpg.batch=true --quiet --settings mvn-settings.xml
+        run: mvn deploy -DskipTests -Dgpg.batch=true --quiet --settings mvn-settings.xml -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }}
         env:
           GPG_TTY: ''
 
