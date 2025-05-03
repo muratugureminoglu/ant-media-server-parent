@@ -49,6 +49,8 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     needs: run-test
+    env:
+      GPG_TTY: $(tty)
     if: github.event_name == 'push'
     steps:
       - name: Checkout code
