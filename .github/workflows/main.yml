@@ -33,7 +33,7 @@ jobs:
       - name: Build Ant Media Server Parent project
         run: |
           ls -alh
-          mvn clean install -DskipTests -Dmaven.javadoc.skip=true -Dgpg.skip=true --quiet
+          mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V --quiet
           cd ..
 
   deploy:
