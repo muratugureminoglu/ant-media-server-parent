@@ -69,7 +69,7 @@ jobs:
 
       - name: Deploy Snapshot
         if: startsWith(github.ref, 'refs/heads/') && contains(steps.get_version.outputs.version, 'SNAPSHOT')
-        run: mvn deploy -DskipTests --quiet --settings mvn-settings.xml
+        run: mvn deploy -DskipTests -Dgpg.args="--pinentry-mode loopback --batch --no-tty" --quiet --settings mvn-settings.xml
         env:
           GPG_TTY: ''
 
